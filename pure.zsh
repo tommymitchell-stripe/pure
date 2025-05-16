@@ -65,11 +65,11 @@ prompt_pure_set_title() {
 	esac
 
 	# Show hostname if connected via SSH.
-	local hostname=
-	if [[ -n $prompt_pure_state[username] ]]; then
-		# Expand in-place in case ignore-escape is used.
-		hostname="${(%):-(%m) }"
-	fi
+	# local hostname=
+	# if [[ -n $prompt_pure_state[username] ]]; then
+	# 	# Expand in-place in case ignore-escape is used.
+	# 	hostname="${(%):-(%m) }"
+	# fi
 
 	local -a opts
 	case $1 in
@@ -78,7 +78,7 @@ prompt_pure_set_title() {
 	esac
 
 	# Set title atomically in one print statement so that it works when XTRACE is enabled.
-	print -n $opts $'\e]0;'${hostname}${2}$'\a'
+	print -n $opts $'\e]0;'${PURE_PRETITLE} ${2}$'\a'
 }
 
 prompt_pure_preexec() {
