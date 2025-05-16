@@ -137,7 +137,7 @@ prompt_pure_preprompt_render() {
 	fi
 
 	# Username and machine, if applicable.
-	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
+	# [[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
 
 	# Set the path.
 	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
@@ -145,7 +145,8 @@ prompt_pure_preprompt_render() {
 	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
-		preprompt_parts+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
+		# preprompt_parts+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
+		preprompt_parts+=("%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
 	fi
 	# Git action (for example, merge).
 	if [[ -n $prompt_pure_vcs_info[action] ]]; then
