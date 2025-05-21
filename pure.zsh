@@ -77,8 +77,10 @@ prompt_pure_set_title() {
 		ignore-escape) opts=(-r);;
 	esac
 
+	local pretitle="["${PURE_PRETITLE}"]"
+
 	# Set title atomically in one print statement so that it works when XTRACE is enabled.
-	print -n $opts $'\e]0;'[${PURE_PRETITLE}] ${2}$'\a'
+	print -n $opts $'\e]0;'${pretitle} ${2}$'\a'
 }
 
 prompt_pure_preexec() {
